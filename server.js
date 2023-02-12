@@ -21,7 +21,7 @@ connectDB();
 // custom made middleware
 app.use(logger);
 //middleware
-app.use(cors(corsOptions)); // this is used so that we can test our api on google and allowing google to make request on our api
+app.use(cors()); // this is used so that we can test our api on google and allowing google to make request on our api
 app.use(express.json()); // this is used to process json in application. This also lead to recive parse json data.
 
 app.use(cookieParser());
@@ -35,8 +35,6 @@ app.use('/notes',require('./routes/noteRoutes'));
 
 // Note: app.use(express.static('public')); This is relative to server.js this  will work fine but to ensure all thing we will use above..
 
-
-
 app.all("*",(req,res)=>{
     res.status(404);
     if(req.accepts('html')){
@@ -47,21 +45,6 @@ app.all("*",(req,res)=>{
         res.type('txt').send('404 Not found!!')
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.use(errorHandler)
 
 mongoose.connection.once('open',()=>{ // this will listen for open event
