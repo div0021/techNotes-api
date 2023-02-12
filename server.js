@@ -21,7 +21,7 @@ connectDB();
 // custom made middleware
 app.use(logger);
 //middleware
-app.use(cors()); // this is used so that we can test our api on google and allowing google to make request on our api
+app.use(cors(corsOptions)); // this is used so that we can test our api on google and allowing google to make request on our api
 app.use(express.json()); // this is used to process json in application. This also lead to recive parse json data.
 
 app.use(cookieParser());
